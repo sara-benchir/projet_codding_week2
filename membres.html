@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste des Membres</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+  <style>
+   
+        .membres img{
+  
+            max-height: 150px;
+        }
+    
+        .table-bordered {
+        border: 1px solid #ddd; /* Bordure générale pour la table */
+       }
+
+      .table-bordered td, 
+      .table-bordered th {
+       border: 1px solid #ddd; /* Bordure pour chaque cellule */
+      }
+   
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand active" href="home.html">Home</a>
+        <div class="navbar-nav">
+            <a class="nav-link ms-4" href="blog.html">Blogs</a>
+            <a class="nav-link ms-4" href="membres.html">Membres</a>
+            <a class="nav-link ms-4" href="about.html">About </a>
+        </div>
+        <form class="d-flex ms-auto">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 500px; border-radius: 20px;">
+        </form>
+        <div class="profile-icon ms-3">
+            <button class="btn btn-outline-secondary">Profile</button>
+            <span class="notification"></span>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h2 class="text-center text-primary mt-4">Liste des membres</h2>
+    <table id="members" class="table  table-bordered">
+        <thead>
+            <tr>
+                
+                <th>Membre</th>
+                
+            </tr>
+        </thead>
+        <tbody id="memberList" >
+            <!-- Les données seront insérées ici par JavaScript -->
+        </tbody>
+    </table>
+</div>
+
+<footer>
+    <div class="container-fluid mt-5 bg-body-tertiary text-center">
+      <div class="row">
+        <div class="col-6">
+          <p class="p-2">© Conception et réalisation par Sara, Tous droits réservés</p>
+        </div>
+          <div class="col-6">
+          <div class="social-icons ">
+            <a href="https://facebook.com" target="_blank" class="text-success mx-2">
+              <i class="fab fa-facebook fa-lg"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="text-success mx-2">
+              <i class="fab fa-instagram fa-lg"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" class="text-success mx-2">
+              <i class="fab fa-twitter fa-lg"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="text-success mx-2">
+              <i class="fab fa-linkedin fa-lg"></i>
+            </a>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script>
+    const membres = [
+  { id: 1, name: "Alice Johnson", description: "Project manager with 5 years of experience.", profilePicture: "img/pers4.jpg", status: "active" },
+  { id: 2, name: "Bob Smith", description: "Senior developer specializing in backend technologies.", profilePicture: "img/pers2.jfif", status: "inactive" },
+  { id: 3, name: "Charlie Brown", description: "Marketing expert focused on social media.", profilePicture: "img/pers3.avif", status: "active" },
+  { id: 4, name: "Diana White", description: "UI/UX designer with a passion for interfaces.", profilePicture: "img/pers4.jpg", status: "inactive" },
+  { id: 5, name: "Evan Green", description: "Data analyst with a background in modeling.", profilePicture: "img/pers5.jpeg", status: "active" },
+  { id: 1, name: "Alice Johnson", description: "Project manager with 5 years of experience.", profilePicture: "img/pers4.jpg", status: "active" },
+  { id: 2, name: "Bob Smith", description: "Senior developer specializing in backend technologies.", profilePicture: "img/pers2.jfif", status: "inactive" },
+  { id: 3, name: "Charlie Brown", description: "Marketing expert focused on social media.", profilePicture: "img/pers3.avif", status: "active" },
+  { id: 4, name: "Diana White", description: "UI/UX designer with a passion for interfaces.", profilePicture: "img/pers4.jpg", status: "inactive" },
+  { id: 5, name: "Evan Green", description: "Data analyst with a background in modeling.", profilePicture: "img/pers5.jpeg", status: "active" },
+  { id: 1, name: "Alice Johnson", description: "Project manager with 5 years of experience.", profilePicture: "img/pers4.jpg", status: "active" },
+  { id: 2, name: "Bob Smith", description: "Senior developer specializing in backend technologies.", profilePicture: "img/pers2.jfif", status: "inactive" },
+  { id: 3, name: "Charlie Brown", description: "Marketing expert focused on social media.", profilePicture: "img/pers3.avif", status: "active" },
+  { id: 4, name: "Diana White", description: "UI/UX designer with a passion for interfaces.", profilePicture: "img/pers4.jpg", status: "inactive" },
+  { id: 5, name: "Evan Green", description: "Data analyst with a background in modeling.", profilePicture: "img/pers5.jpeg", status: "active" },
+    ];
+
+    const tableBody = document.querySelector("#members tbody");
+
+    membres.forEach(member => {
+        const memberDiv = document.createElement("tr");
+    
+    memberDiv.innerHTML = `
+    <td class="align-middle membres">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h4>${member.name}</h4>
+              <p>${member.description}</p>
+            </div>
+            <div>
+              <img src="${member.profilePicture}" alt="Photo of ${member.name}" class="img-fluid" >
+            </div>
+          </div>
+        </td>
+    `;
+    memberList.appendChild(memberDiv);
+  });
+
+    $(document).ready(function() {
+        $('#members').DataTable({
+            responsive: true
+        });
+    });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

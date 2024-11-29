@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+         .navbar {
+            padding: 1rem;
+        }
+        .profile-icon {
+            position: relative;
+        }
+        .notification {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            border-radius: 50%;
+        }
+        svg{
+            border: 1px solid black;
+            width: 35px;
+            height: 35px;
+            border-radius: 10%;
+        }
+        .card img {
+            width: 100%;
+            height: 300px; /* Ajustez cette taille selon vos préférences */
+            object-fit: cover;
+        }
+
+        .rating .fa-star {
+            color: #FFD700;
+        }
+
+        .rating .fa-star-half-alt {
+            color: #FFD700;
+        }
+
+        .rating .fa-star.empty {
+            color: lightgray;
+        }
+    </style>
+</head>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand active" href="home.html">Home</a>
+        <div class="navbar-nav "> <!-- Ajout de `gap-3` pour l'espacement entre les liens -->
+            <a class="nav-link ms-4" href="blog.html">Blogs</a>
+            <a class="nav-link ms-4" href="membres.html">Membres</a>
+            <a class="nav-link ms-4" href="about.html">About </a>
+        </div>
+        <form class="d-flex ms-auto">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 500px; border-radius: 20px;">
+        </form>
+        
+        <div class="profile-icon ms-3">
+            <button class="btn btn-outline-secondary">Profile
+                
+            </button>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
+              </svg>
+          
+            <span class="notification"></span>
+            
+        </div>
+    </div>
+</nav>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col mt-4">
+                <div class="d-flex justify-content-center mb-2">
+                    <input id="searchInput" type="text" class="form-control w-50" placeholder="Search...">
+                    <button class="btn btn-primary ms-3" type="button" data-bs-toggle="modal" data-bs-target="#addBlogModal">
+                        <i class="fa-solid fa-arrow-right"></i> Add blog
+                    </button>
+                </div>
+                <div id="blogList" class="row row-cols-1 row-cols-md-2 g-4">
+                    <!-- Les cartes de blog seront ajoutées ici -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addBlogModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ajouter un Blog</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="addTitle" class="form-control mt-2" placeholder="Titre" required>
+                    <input type="text" id="addType" class="form-control mt-2" placeholder="Type de blog" required>
+                    <textarea id="addDescription" class="form-control mt-2" rows="4" placeholder="Description" required></textarea>
+                    <input type="file" id="addPhoto" class="form-control mt-2" accept="image/*" required>
+                    <input type="number" id="addRate" min="0" max="5" class="form-control mt-2" placeholder="Note" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary" id="addBlogBtn">Valider</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+<footer>
+    <div class="container-fluid mt-5 bg-body-tertiary text-center">
+      <div class="row">
+        <div class="col-6">
+          <p class="p-2">© Conception et réalisation par Sara, Tous droits réservés</p>
+        </div>
+          <div class="col-6">
+          <div class="social-icons ">
+            <a href="https://facebook.com" target="_blank" class="text-success mx-2">
+              <i class="fab fa-facebook fa-lg"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="text-success mx-2">
+              <i class="fab fa-instagram fa-lg"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" class="text-success mx-2">
+              <i class="fab fa-twitter fa-lg"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="text-success mx-2">
+              <i class="fab fa-linkedin fa-lg"></i>
+            </a>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      let blogs = [
+    { id: 1, type: "Technology", title: "AI in Daily Life", description: "Explore AI", photo: "img/techno.jpg", rate: 4.8 },
+    { id: 2, type: "Travel", title: "Hidden Gems", description: "Discover Europe", photo: "img/travel.webp", rate: 4.5 }, // Ajoutez une virgule ici
+    { id: 3, type: "Health & Wellness", title: "5 Simple Ways to Boost Your Mental Health", description: "Tips and techniques to improve your mental well-being and reduce stress in daily life.", photo: "img/health.png", rate: 3.7 },
+    { id: 4, type: "Finance", title: "Beginner's Guide to Investing", description: "Learn the basics of investing, including key concepts and how to start building.", photo: "img/finance.jpg", rate: 4.6 },
+    { id: 5, type: "Lifestyle", title: "How to Create a Minimalist Home", description: "Explore the principles of minimalist design and how to declutter your space for a simpler life.", photo: "img/life.jpg", rate: 4.8 }
+];
+
+
+        function renderBlogs() {
+            const blogList = document.getElementById("blogList");
+            blogList.innerHTML = '';
+
+            blogs.forEach(blog => {
+                const newBlog = document.createElement("div");
+                newBlog.className = "col mb-4";
+
+                const fullStars = Math.floor(blog.rate);
+                const halfStar = blog.rate % 1 >= 0.5 ? 1 : 0;
+                const emptyStars = 5 - fullStars - halfStar;
+
+                let stars = '';
+                for (let i = 0; i < fullStars; i++) stars += '<i class="fas fa-star"></i>';
+                if (halfStar) stars += '<i class="fas fa-star-half-alt"></i>';
+                for (let i = 0; i < emptyStars; i++) stars += '<i class="far fa-star" style="color: lightgray;"></i>';
+
+                newBlog.innerHTML = `
+                    <div class="card">
+                        <img src="${blog.photo}" alt="Image de blog">
+                        <div class="card-body">
+                            <h5>${blog.title}</h5>
+                            <p>${blog.description}</p>
+                            <div class="rating">${stars}</div>
+                        </div>
+                    </div>
+                `;
+                blogList.appendChild(newBlog);
+            });
+        }
+
+        document.getElementById('addBlogBtn').addEventListener('click', function () {
+            const type = document.getElementById('addType').value;
+            const title = document.getElementById('addTitle').value;
+            const description = document.getElementById('addDescription').value;
+            const rate = parseFloat(document.getElementById('addRate').value);
+            const photoInput = document.getElementById('addPhoto');
+
+            if (photoInput.files.length > 0) {
+                const photoURL = URL.createObjectURL(photoInput.files[0]);
+                blogs.push({ id: blogs.length + 1, type, title, description, photo: photoURL, rate });
+
+                document.getElementById('addType').value = '';
+                document.getElementById('addTitle').value = '';
+                document.getElementById('addDescription').value = '';
+                document.getElementById('addPhoto').value = '';
+                document.getElementById('addRate').value = '';
+
+                const modalElement = bootstrap.Modal.getInstance(document.getElementById('addBlogModal'));
+                modalElement.hide();
+
+                renderBlogs();
+            } else {
+                alert('Veuillez sélectionner une image.');
+            }
+        });
+
+        renderBlogs();
+    </script>
+</body>
+
+</html>
